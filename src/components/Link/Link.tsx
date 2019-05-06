@@ -36,7 +36,12 @@ function Link({
   monochrome,
   polaris,
 }: CombinedProps) {
-  const className = classNames(styles.Link, monochrome && styles.monochrome);
+  // const plainText = typeof children === 'string';
+  const className = classNames(
+    styles.Link,
+    monochrome && styles.monochrome,
+    // plainText && styles.plainText,
+  );
   let childrenMarkup = children;
 
   if (external && typeof children === 'string') {

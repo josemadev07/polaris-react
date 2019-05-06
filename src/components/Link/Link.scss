@@ -1,17 +1,18 @@
 .Link {
   @include recolor-icon(currentColor);
   appearance: none;
-  display: inline-flex;
-  text-align: inherit;
-  background: none;
-  border: none;
+  display: inline;
   padding: 0;
+  // display: inline-flex;
+  // margin: rem(-2px);
+  // padding: rem(2px);
   // border-radius: border-radius();
-  // margin: rem(-1px);
-  // padding: rem(1px);
-  font-size: inherit;
+  background: none;
   color: color('blue');
+  font-size: inherit;
+  text-align: inherit;
   text-decoration: none;
+  outline-color: currentColor;
   cursor: pointer;
 
   &:hover {
@@ -45,13 +46,22 @@
   }
 }
 
+// .plainText {
+//   display: inline;
+//   // margin: 0 (-1 * spacing(extra-tight));
+//   padding: 0 spacing(extra-tight);
+// }
+
 .monochrome {
   color: inherit;
   @include underlined-link;
 
   &:hover,
-  &:focus,
   &:active {
+    color: inherit;
+  }
+
+  &:focus {
     color: inherit;
   }
 }
