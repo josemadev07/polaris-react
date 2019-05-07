@@ -1,16 +1,16 @@
 import * as React from 'react';
-import {Consumer} from '../Context';
+import AppProviderContext from '../Context';
 import AppProvider from '../AppProvider';
 import {mountWithAppProvider} from '../../../test-utilities';
 
 describe('<AppProvider />', () => {
   it('updates polaris context when props change', () => {
     const Child: React.SFC<{}> = (_props) => (
-      <Consumer>
+      <AppProviderContext.Consumer>
         {({link: {linkComponent}}) =>
           linkComponent ? <div id="child" /> : null
         }
-      </Consumer>
+      </AppProviderContext.Consumer>
     );
     const LinkComponent = () => <div />;
 

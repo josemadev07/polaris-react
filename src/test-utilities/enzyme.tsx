@@ -11,8 +11,8 @@ import {DeepPartial} from '../types';
 import {
   createPolarisContext,
   createAppProviderContext,
-  Provider as AppProviderProvider,
-  Context as AppProviderContext,
+  AppProviderContext,
+  Context as AppProviderContextType,
 } from '../components/AppProvider';
 // eslint-disable-next-line shopify/strict-component-boundaries
 import {Provider as FrameProvider, FrameContext} from '../components/Frame';
@@ -78,7 +78,7 @@ function updateRoot(wrapper: AnyWrapper) {
 }
 
 type AppContext = {
-  polaris: AppProviderContext;
+  polaris: AppProviderContextType;
   frame: FrameContext;
 };
 
@@ -139,9 +139,9 @@ export class AppContextReactWrapper<P, S> extends ReactWrapper<P, S> {
       }
 
       return (
-        <AppProviderProvider value={app.polaris}>
+        <AppProviderContext.Provider value={app.polaris}>
           <FrameProvider value={app.frame}>{content}</FrameProvider>
-        </AppProviderProvider>
+        </AppProviderContext.Provider>
       );
     }
 

@@ -9,10 +9,7 @@ import {
   ThemeContext,
   Consumer as ThemeProviderConsumer,
 } from '../../../ThemeProvider';
-import {
-  Consumer as AppProviderConsumer,
-  Provider as AppProviderProvider,
-} from '../../Context';
+import AppProviderContext from '../../Context';
 
 export type ReactComponent<P, C> =
   | React.ComponentClass<P> & C
@@ -40,18 +37,18 @@ function withScrollable<P, T>(WrappedComponent: ReactComponent<P, T>) {
 
     render() {
       return (
-        <AppProviderConsumer>
+        <AppProviderContext.Consumer>
           {(polaris) => (
-            <AppProviderProvider
+            <AppProviderContext.Provider
               value={{
                 ...polaris,
                 stickyManager: this.stickyManager,
               }}
             >
               <WrappedComponent {...this.props} />
-            </AppProviderProvider>
+            </AppProviderContext.Provider>
           )}
-        </AppProviderConsumer>
+        </AppProviderContext.Consumer>
       );
     }
   }
@@ -71,7 +68,7 @@ export default function withAppProvider<OwnProps>({
 
       render() {
         return (
-          <AppProviderConsumer>
+          <AppProviderContext.Consumer>
             {(polaris) => {
               return (
                 <ThemeProviderConsumer>
@@ -99,7 +96,7 @@ export default function withAppProvider<OwnProps>({
                 </ThemeProviderConsumer>
               );
             }}
-          </AppProviderConsumer>
+          </AppProviderContext.Consumer>
         );
       }
     }

@@ -14,5 +14,5 @@ export {
   CreateAppProviderContext,
 } from './utilities';
 export {AppProviderProps as Props, Context} from './types';
-export {Provider, Consumer} from './Context';
+export {default as AppProviderContext} from './Context';
 export {default} from './AppProvider';
