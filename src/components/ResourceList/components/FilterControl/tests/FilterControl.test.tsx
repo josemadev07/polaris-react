@@ -304,7 +304,7 @@ describe('<FilterControl />', () => {
         </Provider>,
       );
 
-      const expectedLocalizedLabel = filterControl.app.appProviderContext.polaris.intl.translate(
+      const expectedLocalizedLabel = filterControl.app.polaris.polaris.intl.translate(
         'Polaris.ResourceList.DateSelector.FilterLabelForValue.past_week',
       );
 
@@ -339,7 +339,7 @@ describe('<FilterControl />', () => {
         </Provider>,
       );
 
-      const expectedLocalizedLabel = filterControl.app.appProviderContext.polaris.intl.translate(
+      const expectedLocalizedLabel = filterControl.app.polaris.polaris.intl.translate(
         'Polaris.ResourceList.DateSelector.FilterLabelForValue.on_or_after',
         {
           date: new Date(selectedDate.replace(/-/g, '/')).toLocaleDateString(),
@@ -374,7 +374,7 @@ describe('<FilterControl />', () => {
         </Provider>,
       );
 
-      const expectedLocalizedLabel = filterControl.app.appProviderContext.polaris.intl.translate(
+      const expectedLocalizedLabel = filterControl.app.polaris.polaris.intl.translate(
         'Polaris.ResourceList.DateSelector.FilterLabelForValue.on_or_before',
         {
           date: new Date(selectedDate.replace(/-/g, '/')).toLocaleDateString(),
@@ -409,7 +409,7 @@ describe('<FilterControl />', () => {
         </Provider>,
       );
 
-      const expectedLocalizedLabel = filterControl.app.appProviderContext.polaris.intl.translate(
+      const expectedLocalizedLabel = filterControl.app.polaris.polaris.intl.translate(
         'Polaris.ResourceList.DateSelector.FilterLabelForValue.on_or_before',
         {
           date: selectedDate,

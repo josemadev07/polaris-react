@@ -5,6 +5,7 @@ import {get} from '../utilities/get';
 import merge from '../utilities/merge';
 import {createThemeContext} from '../components';
 import {PolarisContext} from '../components/types';
+import {DeepPartial} from '../types';
 
 // eslint-disable-next-line shopify/strict-component-boundaries
 import {
@@ -14,7 +15,7 @@ import {
   Context as AppProviderContext,
 } from '../components/AppProvider';
 // eslint-disable-next-line shopify/strict-component-boundaries
-import {Provider as FrameProvider} from '../components/Frame';
+import {Provider as FrameProvider, FrameContext} from '../components/Frame';
 
 export type AnyWrapper = ReactWrapper<any, any> | CommonWrapper<any, any>;
 
@@ -76,20 +77,32 @@ function updateRoot(wrapper: AnyWrapper) {
   (wrapper as any).root().update();
 }
 
-export interface MountWithAppProviderOptions {
-  context?: any;
+type AppContext = {
+  polaris: AppProviderContext;
+  frame: FrameContext;
+};
+
+interface AppContextOptions {
+  app: AppContext;
+}
+
+interface MountWithAppProviderOptions {
+  context?: {
+    frame?: DeepPartial<FrameContext>;
+    polaris?: DeepPartial<PolarisContext>;
+  };
 }
 
 export function mountWithAppProvider<P>(
   node: React.ReactElement<P>,
   options: MountWithAppProviderOptions = {},
 ): AppContextReactWrapper<P, any> {
-  const {context: ctx} = options;
+  const {context: ctx = {}} = options;
 
-  const appProviderContext = createPolarisContext();
-  merge(appProviderContext, ctx.polaris);
+  const polaris = createPolarisContext();
+  ctx.polaris && merge(polaris, ctx.polaris);
 
-  const frameProviderContext = {
+  const frame = {
     frame: {
       showToast: noop,
       hideToast: noop,
@@ -99,11 +112,11 @@ export function mountWithAppProvider<P>(
       stopLoading: noop,
     },
   };
-  merge(appProviderContext, ctx.frame);
+  ctx.frame && merge(frame, ctx.frame);
 
   const context: AppContext = {
-    appProviderContext,
-    frameProviderContext,
+    polaris,
+    frame,
   };
 
   const wrapper = new AppContextReactWrapper(node, {
@@ -111,10 +124,6 @@ export function mountWithAppProvider<P>(
   });
 
   return wrapper;
-}
-
-interface AppContextOptions {
-  app: AppContext;
 }
 
 export class AppContextReactWrapper<P, S> extends ReactWrapper<P, S> {
@@ -131,10 +140,8 @@ export class AppContextReactWrapper<P, S> extends ReactWrapper<P, S> {
       }
 
       return (
-        <AppProviderProvider value={app.appProviderContext}>
-          <FrameProvider value={app.frameProviderContext}>
-            {content}
-          </FrameProvider>
+        <AppProviderProvider value={app.polaris}>
+          <FrameProvider value={app.frame}>{content}</FrameProvider>
         </AppProviderProvider>
       );
     }
@@ -142,11 +149,6 @@ export class AppContextReactWrapper<P, S> extends ReactWrapper<P, S> {
     this.app = app;
   }
 }
-
-export type AppContext = {
-  appProviderContext: AppProviderContext;
-  frameProviderContext: any;
-};
 
 export function createPolarisProps(): PolarisContext {
   const {polaris} = createAppProviderContext();
