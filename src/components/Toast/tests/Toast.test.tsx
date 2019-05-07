@@ -22,7 +22,7 @@ describe('<Toast />', () => {
       </Provider>,
     );
 
-    expect(mockFrameContext.frame.showToast).toHaveBeenCalledWith(
+    expect(mockFrameContext.showToast).toHaveBeenCalledWith(
       expect.objectContaining({id: expect.any(String), ...props}),
     );
   });
@@ -38,12 +38,12 @@ describe('<Toast />', () => {
       </Provider>,
     );
 
-    expect(mockFrameContext.frame.hideToast).not.toHaveBeenCalled();
+    expect(mockFrameContext.hideToast).not.toHaveBeenCalled();
     frame.unmount();
 
-    const mockHideToast = mockFrameContext.frame.hideToast as jest.Mock;
+    const mockHideToast = mockFrameContext.hideToast as jest.Mock;
     const {id} = mockHideToast.mock.calls[0][0];
-    expect(mockFrameContext.frame.hideToast).toHaveBeenCalledWith({id});
+    expect(mockFrameContext.hideToast).toHaveBeenCalledWith({id});
   });
 
   describe('with app bridge', () => {

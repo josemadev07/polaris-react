@@ -104,14 +104,12 @@ export function mountWithAppProvider<P>(
     (ctx.polaris && merge(polarisDefault, ctx.polaris)) || polarisDefault;
 
   const frameDefault = {
-    frame: {
-      showToast: noop,
-      hideToast: noop,
-      setContextualSaveBar: noop,
-      removeContextualSaveBar: noop,
-      startLoading: noop,
-      stopLoading: noop,
-    },
+    showToast: noop,
+    hideToast: noop,
+    setContextualSaveBar: noop,
+    removeContextualSaveBar: noop,
+    startLoading: noop,
+    stopLoading: noop,
   };
   const frame = (ctx.frame && merge(frameDefault, ctx.frame)) || frameDefault;
 

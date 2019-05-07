@@ -9,9 +9,7 @@ export interface FrameManager {
   stopLoading(): void;
 }
 
-export interface FrameContext {
-  frame: FrameManager;
-}
+export interface FrameContext extends FrameManager {}
 
 interface ContextualSaveBarAction {
   /** A destination to link to */

@@ -20,7 +20,7 @@ describe('<Loading />', () => {
         <Loading />
       </Provider>,
     );
-    expect(mockFrameContext.frame.startLoading).toHaveBeenCalled();
+    expect(mockFrameContext.startLoading).toHaveBeenCalled();
   });
 
   it('stops loading on unmount', () => {
@@ -32,10 +32,10 @@ describe('<Loading />', () => {
         <Loading />
       </Provider>,
     );
-    expect(mockFrameContext.frame.stopLoading).not.toHaveBeenCalled();
+    expect(mockFrameContext.stopLoading).not.toHaveBeenCalled();
 
     frame.unmount();
-    expect(mockFrameContext.frame.stopLoading).toHaveBeenCalled();
+    expect(mockFrameContext.stopLoading).toHaveBeenCalled();
   });
 
   describe('with app bridge', () => {
