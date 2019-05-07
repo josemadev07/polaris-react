@@ -96,7 +96,7 @@ interface MountWithAppProviderOptions {
 export function mountWithAppProvider<P>(
   node: React.ReactElement<P>,
   options: MountWithAppProviderOptions = {},
-): AppContextReactWrapper<P, any> {
+): PolarisContextReactWrapper<P, any> {
   const {context: ctx = {}} = options;
 
   const polarisDefault = createPolarisContext();
@@ -118,14 +118,14 @@ export function mountWithAppProvider<P>(
     frame,
   };
 
-  const wrapper = new AppContextReactWrapper(node, {
+  const wrapper = new PolarisContextReactWrapper(node, {
     app: context,
   });
 
   return wrapper;
 }
 
-export class AppContextReactWrapper<P, S> extends ReactWrapper<P, S> {
+export class PolarisContextReactWrapper<P, S> extends ReactWrapper<P, S> {
   public readonly app: AppContext;
 
   constructor(element: React.ReactElement<P>, {app}: AppContextOptions) {
