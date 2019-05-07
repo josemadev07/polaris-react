@@ -2,19 +2,16 @@
   @include recolor-icon(currentColor);
   appearance: none;
   display: inline;
+  text-align: inherit;
   padding: 0;
   background: none;
-  color: color('blue');
+  border: 0;
   font-size: inherit;
-  text-align: inherit;
+  color: color('blue');
   text-decoration: none;
-  outline-color: currentColor;
   cursor: pointer;
 
-  &:hover {
-    color: color('blue', 'dark');
-  }
-
+  &:hover,
   &:active {
     color: color('blue', 'dark');
   }
@@ -42,11 +39,8 @@
   @include underlined-link;
 
   &:hover,
+  &:focus,
   &:active {
-    color: inherit;
-  }
-
-  &:focus {
     color: inherit;
   }
 }
