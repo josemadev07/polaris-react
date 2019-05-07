@@ -153,5 +153,5 @@ export function createPolarisProps(): PolarisContext {
   const polaris = createAppProviderContext();
   const theme = createThemeContext().polarisTheme;
   const polarisContext = {...polaris, theme};
-  return {...polarisContext};
+  return polarisContext;
 }
