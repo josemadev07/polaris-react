@@ -68,7 +68,7 @@ function mountWithAppBridge(element: React.ReactElement<any>) {
   const appBridge = {};
   const polaris = {appBridge};
   const loading = mountWithAppProvider(element, {
-    context: {frame: {}, polaris: {polaris}},
+    context: {frame: {}, polaris},
   });
 
   return {loading, polaris};

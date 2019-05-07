@@ -116,7 +116,7 @@ function mountWithAppBridge(element: React.ReactElement<any>) {
   const appBridge = {};
   const polaris = {appBridge};
   const toast = mountWithAppProvider(element, {
-    context: {frame: {}, polaris: {polaris}},
+    context: {frame: {}, polaris},
   });
 
   return {toast, polaris};

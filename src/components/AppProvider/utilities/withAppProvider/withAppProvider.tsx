@@ -41,10 +41,11 @@ function withScrollable<P, T>(WrappedComponent: ReactComponent<P, T>) {
     render() {
       return (
         <AppProviderConsumer>
-          {({polaris}) => (
+          {(polaris) => (
             <AppProviderProvider
               value={{
-                polaris: {...polaris, stickyManager: this.stickyManager},
+                ...polaris,
+                stickyManager: this.stickyManager,
               }}
             >
               <WrappedComponent {...this.props} />
@@ -71,7 +72,7 @@ export default function withAppProvider<OwnProps>({
       render() {
         return (
           <AppProviderConsumer>
-            {({polaris}) => {
+            {(polaris) => {
               return (
                 <ThemeProviderConsumer>
                   {({polarisTheme}) => {
@@ -80,7 +81,7 @@ export default function withAppProvider<OwnProps>({
                       theme: polarisTheme,
                     };
 
-                    if (!polaris) {
+                    if (Object.keys(polaris).length < 1) {
                       throw new Error(
                         `The <AppProvider> component is required as of v2.0 of Polaris React. See
                                     https://polaris.shopify.com/components/structure/app-provider for implementation

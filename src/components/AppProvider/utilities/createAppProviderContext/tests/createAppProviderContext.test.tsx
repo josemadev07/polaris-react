@@ -40,13 +40,11 @@ describe('createAppProviderContext()', () => {
     const context = createAppProviderContext();
 
     expect(context).toMatchObject({
-      polaris: {
-        intl: expect.any(Intl),
-        link: expect.any(Link),
-        stickyManager: expect.any(StickyManager),
-        scrollLockManager: expect.any(ScrollLockManager),
-        appBridge: undefined,
-      },
+      intl: expect.any(Intl),
+      link: expect.any(Link),
+      stickyManager: expect.any(StickyManager),
+      scrollLockManager: expect.any(ScrollLockManager),
+      appBridge: undefined,
     });
   });
 
@@ -83,22 +81,20 @@ describe('createAppProviderContext()', () => {
     });
 
     expect(context).toMatchObject({
-      polaris: {
-        intl: expect.any(Intl),
-        link: expect.any(Link),
-        stickyManager: expect.any(StickyManager),
-        scrollLockManager: expect.any(ScrollLockManager),
-        appBridge: {
-          apiKey,
-          forceRedirect: undefined,
-          shopOrigin: undefined,
-          dispatch: expect.any(Function),
-          localOrigin: '',
-          featuresAvailable: expect.any(Function),
-          getState: expect.any(Function),
-          subscribe: expect.any(Function),
-          error: expect.any(Function),
-        },
+      intl: expect.any(Intl),
+      link: expect.any(Link),
+      stickyManager: expect.any(StickyManager),
+      scrollLockManager: expect.any(ScrollLockManager),
+      appBridge: {
+        apiKey,
+        forceRedirect: undefined,
+        shopOrigin: undefined,
+        dispatch: expect.any(Function),
+        localOrigin: '',
+        featuresAvailable: expect.any(Function),
+        getState: expect.any(Function),
+        subscribe: expect.any(Function),
+        error: expect.any(Function),
       },
     });
 

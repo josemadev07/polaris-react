@@ -191,7 +191,7 @@ function mountWithAppBridge(element: React.ReactElement<any>) {
   const appBridge = {};
   const polaris = {appBridge};
   const resourcePicker = mountWithAppProvider(element, {
-    context: {polaris: {polaris}},
+    context: {polaris},
   });
 
   return {resourcePicker, polaris};

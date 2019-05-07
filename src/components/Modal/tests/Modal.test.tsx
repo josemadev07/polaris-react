@@ -468,7 +468,7 @@ function mountWithAppBridge(element: React.ReactElement<any>) {
   const appBridge = {};
   const polaris = {appBridge};
   const modal = mountWithAppProvider(element, {
-    context: {polaris: {polaris}},
+    context: {polaris},
   });
 
   return {modal, polaris};

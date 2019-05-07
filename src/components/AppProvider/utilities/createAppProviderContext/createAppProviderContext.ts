@@ -39,13 +39,11 @@ export default function createAppProviderContext({
   }
 
   return {
-    polaris: {
-      intl,
-      link,
-      stickyManager: stickyManager || new StickyManager(),
-      scrollLockManager: scrollLockManager || new ScrollLockManager(),
-      appBridge,
-    },
+    intl,
+    link,
+    stickyManager: stickyManager || new StickyManager(),
+    scrollLockManager: scrollLockManager || new ScrollLockManager(),
+    appBridge,
   };
 }
 

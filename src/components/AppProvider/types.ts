@@ -29,11 +29,9 @@ export interface AppProviderProps {
 }
 
 export interface Context {
-  polaris: {
-    intl: Intl;
-    link: Link;
-    stickyManager: StickyManager;
-    scrollLockManager: ScrollLockManager;
-    appBridge?: ClientApplication<{}>;
-  };
+  intl: Intl;
+  link: Link;
+  stickyManager: StickyManager;
+  scrollLockManager: ScrollLockManager;
+  appBridge?: ClientApplication<{}>;
 }

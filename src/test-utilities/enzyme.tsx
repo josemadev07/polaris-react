@@ -99,10 +99,11 @@ export function mountWithAppProvider<P>(
 ): AppContextReactWrapper<P, any> {
   const {context: ctx = {}} = options;
 
-  const polaris = createPolarisContext();
-  ctx.polaris && merge(polaris, ctx.polaris);
+  const polarisDefault = createPolarisContext();
+  const polaris =
+    (ctx.polaris && merge(polarisDefault, ctx.polaris)) || polarisDefault;
 
-  const frame = {
+  const frameDefault = {
     frame: {
       showToast: noop,
       hideToast: noop,
@@ -112,7 +113,7 @@ export function mountWithAppProvider<P>(
       stopLoading: noop,
     },
   };
-  ctx.frame && merge(frame, ctx.frame);
+  const frame = (ctx.frame && merge(frameDefault, ctx.frame)) || frameDefault;
 
   const context: AppContext = {
     polaris,
@@ -151,8 +152,8 @@ export class AppContextReactWrapper<P, S> extends ReactWrapper<P, S> {
 }
 
 export function createPolarisProps(): PolarisContext {
-  const {polaris} = createAppProviderContext();
+  const polaris = createAppProviderContext();
   const theme = createThemeContext().polarisTheme;
   const polarisContext = {...polaris, theme};
-  return {polaris: polarisContext};
+  return {...polarisContext};
 }

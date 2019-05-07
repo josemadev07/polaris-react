@@ -390,7 +390,7 @@ function mountWithAppBridge(element: React.ReactElement<any>) {
   const appBridge = {};
   const polaris = {appBridge};
   const page = mountWithAppProvider(element, {
-    context: {polaris: {polaris}},
+    context: {polaris},
   });
   return {page, polaris};
 }

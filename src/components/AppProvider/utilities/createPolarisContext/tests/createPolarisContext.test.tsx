@@ -25,13 +25,11 @@ describe('createPolarisContext()', () => {
     const context = createPolarisContext();
 
     expect(context).toMatchObject({
-      polaris: {
-        intl: expect.any(Intl),
-        link: expect.any(Link),
-        stickyManager: expect.any(StickyManager),
-        scrollLockManager: expect.any(ScrollLockManager),
-        appBridge: undefined,
-      },
+      intl: expect.any(Intl),
+      link: expect.any(Link),
+      stickyManager: expect.any(StickyManager),
+      scrollLockManager: expect.any(ScrollLockManager),
+      appBridge: undefined,
       polarisTheme: {
         logo: null,
       },
@@ -72,13 +70,11 @@ describe('createPolarisContext()', () => {
       },
     );
     const mockContext = {
-      polaris: {
-        intl: new Intl(i18n),
-        link: new Link(CustomLinkComponent),
-        stickyManager,
-        scrollLockManager,
-        appBridge: undefined,
-      },
+      intl: new Intl(i18n),
+      link: new Link(CustomLinkComponent),
+      stickyManager,
+      scrollLockManager,
+      appBridge: undefined,
       polarisTheme: {
         logo: null,
       },
@@ -107,13 +103,11 @@ describe('createPolarisContext()', () => {
       stickyManager,
     });
     const mockContext = {
-      polaris: {
-        intl: new Intl(i18n),
-        link: new Link(CustomLinkComponent),
-        stickyManager,
-        scrollLockManager,
-        appBridge: undefined,
-      },
+      intl: new Intl(i18n),
+      link: new Link(CustomLinkComponent),
+      stickyManager,
+      scrollLockManager,
+      appBridge: undefined,
       polarisTheme: {
         logo: null,
       },
@@ -128,13 +122,11 @@ describe('createPolarisContext()', () => {
     });
 
     expect(context).toMatchObject({
-      polaris: {
-        intl: expect.any(Intl),
-        link: expect.any(Link),
-        stickyManager: expect.any(StickyManager),
-        scrollLockManager: expect.any(ScrollLockManager),
-        appBridge: undefined,
-      },
+      intl: expect.any(Intl),
+      link: expect.any(Link),
+      stickyManager: expect.any(StickyManager),
+      scrollLockManager: expect.any(ScrollLockManager),
+      appBridge: undefined,
       polarisTheme: {
         logo: null,
       },
