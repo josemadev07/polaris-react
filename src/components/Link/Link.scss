@@ -3,10 +3,6 @@
   appearance: none;
   display: inline;
   padding: 0;
-  // display: inline-flex;
-  // margin: rem(-2px);
-  // padding: rem(2px);
-  // border-radius: border-radius();
   background: none;
   color: color('blue');
   font-size: inherit;
@@ -18,11 +14,6 @@
   &:hover {
     color: color('blue', 'dark');
   }
-
-  // &:focus {
-  //   outline: 1px dashed transparent;
-  //   box-shadow: 0 0 0 2px currentColor;
-  // }
 
   &:active {
     color: color('blue', 'dark');
@@ -45,12 +36,6 @@
     content: '\2060';
   }
 }
-
-// .plainText {
-//   display: inline;
-//   // margin: 0 (-1 * spacing(extra-tight));
-//   padding: 0 spacing(extra-tight);
-// }
 
 .monochrome {
   color: inherit;
