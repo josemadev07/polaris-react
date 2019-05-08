@@ -10,10 +10,15 @@ import {DeepPartial} from '../types';
 import {
   createPolarisContext,
   AppProviderContext,
-  Context as AppProviderContextType,
 } from '../components/AppProvider';
 // eslint-disable-next-line shopify/strict-component-boundaries
 import {Provider as FrameProvider, FrameContext} from '../components/Frame';
+// eslint-disable-next-line shopify/strict-component-boundaries
+import {
+  createThemeContext,
+  ThemeProviderContext,
+  Provider as ThemeProviderProvider,
+} from '../components/ThemeProvider';
 
 export type AnyWrapper = ReactWrapper<any, any> | CommonWrapper<any, any>;
 
@@ -76,7 +81,8 @@ function updateRoot(wrapper: AnyWrapper) {
 }
 
 type AppContext = {
-  polaris: AppProviderContextType;
+  polaris: PolarisContext;
+  themeProvider: ThemeProviderContext;
   frame: FrameContext;
 };
 
@@ -86,8 +92,9 @@ interface AppContextOptions {
 
 interface MountWithAppProviderOptions {
   context?: {
-    frame?: DeepPartial<FrameContext>;
     polaris?: DeepPartial<PolarisContext>;
+    themeProvider?: DeepPartial<ThemeProviderContext>;
+    frame?: DeepPartial<FrameContext>;
   };
 }
 
@@ -101,6 +108,11 @@ export function mountWithAppProvider<P>(
   const polaris =
     (ctx.polaris && merge(polarisDefault, ctx.polaris)) || polarisDefault;
 
+  const themeproviderDefault = createThemeContext();
+  const themeProvider =
+    (ctx.themeProvider && merge(themeproviderDefault, ctx.themeProvider)) ||
+    themeproviderDefault;
+
   const frameDefault = {
     showToast: noop,
     hideToast: noop,
@@ -113,6 +125,7 @@ export function mountWithAppProvider<P>(
 
   const context: AppContext = {
     polaris,
+    themeProvider,
     frame,
   };
 
@@ -138,7 +151,9 @@ export class PolarisContextReactWrapper<P, S> extends ReactWrapper<P, S> {
 
       return (
         <AppProviderContext.Provider value={app.polaris}>
-          <FrameProvider value={app.frame}>{content}</FrameProvider>
+          <ThemeProviderProvider value={app.themeProvider}>
+            <FrameProvider value={app.frame}>{content}</FrameProvider>
+          </ThemeProviderProvider>
         </AppProviderContext.Provider>
       );
     }
