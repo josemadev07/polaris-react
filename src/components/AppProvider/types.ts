@@ -28,7 +28,7 @@ export interface AppProviderProps {
   theme?: Theme;
 }
 
-export interface Context {
+export interface AppProviderContextType {
   intl: Intl;
   link: Link;
   stickyManager: StickyManager;

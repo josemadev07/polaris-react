@@ -8,7 +8,7 @@ export {default as ActionList, Props as ActionListProps} from './ActionList';
 export {
   default as AppProvider,
   Props as AppProviderProps,
-  Context as AppProviderContext,
+  AppProviderContextType,
   createAppProviderContext,
   createPolarisContext,
   withAppProvider,

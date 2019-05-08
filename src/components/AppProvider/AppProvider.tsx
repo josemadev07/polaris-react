@@ -6,10 +6,10 @@ import {
   createAppProviderContext,
 } from './utilities';
 import AppProviderContext from './Context';
-import {AppProviderProps, Context} from './types';
+import {AppProviderProps, AppProviderContextType} from './types';
 
 interface State {
-  context: Context;
+  context: AppProviderContextType;
 }
 
 // The script in the styleguide that generates the Props Explorer data expects
@@ -75,7 +75,7 @@ export default class AppProvider extends React.Component<Props, State> {
     });
   }
 
-  get getContext(): Context {
+  get getContext(): AppProviderContextType {
     return this.state.context;
   }
 

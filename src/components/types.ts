@@ -1,7 +1,7 @@
-import {Context as AppProviderContext} from './AppProvider';
+import {AppProviderContextType} from './AppProvider';
 import {ThemeProviderContext} from './ThemeProvider';
 
-export interface PolarisContext extends AppProviderContext {
+export interface PolarisContext extends AppProviderContextType {
   theme: ThemeProviderContext;
 }
 

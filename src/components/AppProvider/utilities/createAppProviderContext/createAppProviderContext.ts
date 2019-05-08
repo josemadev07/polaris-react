@@ -3,7 +3,7 @@ import createApp, {
   LifecycleHook,
   DispatchActionHook,
 } from '@shopify/app-bridge';
-import {AppProviderProps, Context} from '../../types';
+import {AppProviderProps, AppProviderContextType} from '../../types';
 import StickyManager from '../StickyManager';
 import ScrollLockManager from '../ScrollLockManager';
 import Intl from '../Intl';
@@ -23,7 +23,7 @@ export default function createAppProviderContext({
   forceRedirect,
   stickyManager,
   scrollLockManager,
-}: CreateAppProviderContext = {}): Context {
+}: CreateAppProviderContext = {}): AppProviderContextType {
   const intl = new Intl(i18n);
   const link = new Link(linkComponent);
   const appBridge = apiKey
