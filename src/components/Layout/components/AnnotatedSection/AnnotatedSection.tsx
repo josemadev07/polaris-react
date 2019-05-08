@@ -15,12 +15,18 @@ export default function AnnotatedSection(props: Props) {
   const descriptionMarkup =
     typeof description === 'string' ? <p>{description}</p> : description;
 
+  const headingMarkup = React.isValidElement(title) ? (
+    title
+  ) : (
+    <Heading testID="AnnotationTitle">{title}</Heading>
+  );
+
   return (
     <div className={styles.AnnotatedSection}>
       <div className={styles.AnnotationWrapper}>
         <div className={styles.Annotation}>
           <TextContainer>
-            <Heading testID="AnnotationTitle">{title}</Heading>
+            {headingMarkup}
             {descriptionMarkup && (
               <div
                 className={styles.AnnotationDescription}

@@ -67,7 +67,7 @@ describe('<Layout />', () => {
       expect(annotatedSection.find(MyComponent).exists()).toBe(true);
     });
 
-    it('renders a title', () => {
+    it('renders a string as a title', () => {
       const title = 'Store details';
       const annotatedSection = mountWithAppProvider(
         <Layout.AnnotatedSection title={title} />,
@@ -76,6 +76,21 @@ describe('<Layout />', () => {
       expect(findByTestID(annotatedSection, 'AnnotationTitle').text()).toBe(
         title,
       );
+    });
+
+    it('renders node as a title', () => {
+      const title = 'Store details';
+      const annotatedSection = mountWithAppProvider(
+        <Layout.AnnotatedSection
+          title={
+            <div testID="NodeAsTitle">
+              <h2>{title}</h2>
+            </div>
+          }
+        />,
+      );
+
+      expect(findByTestID(annotatedSection, 'NodeAsTitle').text()).toBe(title);
     });
 
     it('renders a description as a string', () => {
