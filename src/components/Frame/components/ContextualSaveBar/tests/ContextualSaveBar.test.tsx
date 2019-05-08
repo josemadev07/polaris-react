@@ -2,7 +2,7 @@ import * as React from 'react';
 import {mountWithAppProvider, trigger} from 'test-utilities';
 import {
   createThemeContext,
-  ThemeContext,
+  ThemeProviderContext,
   Provider as ThemeProvider,
 } from 'components/ThemeProvider';
 import {Button, Image, Modal} from 'components';
@@ -174,9 +174,9 @@ describe('<ContextualSaveBar />', () => {
 
 function mountWithContext(
   node: React.ReactElement<any>,
-  polarisTheme?: ThemeContext,
+  polarisTheme?: ThemeProviderContext,
 ) {
-  const context = polarisTheme ? {polarisTheme} : createThemeContext();
+  const context = polarisTheme ? polarisTheme : createThemeContext();
   return mountWithAppProvider(
     <ThemeProvider value={context}>{node}</ThemeProvider>,
   );

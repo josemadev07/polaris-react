@@ -6,7 +6,7 @@ import TopBar from '../TopBar';
 import {Menu, SearchField, UserMenu, Search} from '../components';
 import {
   createThemeContext,
-  ThemeContext,
+  ThemeProviderContext,
   Provider as ThemeProvider,
 } from '../../ThemeProvider';
 
@@ -228,9 +228,9 @@ describe('<TopBar />', () => {
 
 function mountWithContext(
   node: React.ReactElement<any>,
-  polarisTheme?: ThemeContext,
+  polarisTheme?: ThemeProviderContext,
 ) {
-  const context = polarisTheme ? {polarisTheme} : createThemeContext();
+  const context = polarisTheme ? polarisTheme : createThemeContext();
   return mountWithAppProvider(
     <ThemeProvider value={context}>{node}</ThemeProvider>,
   );

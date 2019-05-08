@@ -17,7 +17,7 @@ import TopBar, {UserMenuProvider} from '../../TopBar';
 import {
   createThemeContext,
   Provider as ThemeProvider,
-  ThemeContext,
+  ThemeProviderContext,
 } from '../../ThemeProvider';
 import Navigation from '../../Navigation';
 
@@ -249,9 +249,9 @@ describe('<Frame />', () => {
 
 function mountWithContext(
   node: React.ReactElement<any>,
-  polarisTheme?: ThemeContext,
+  polarisTheme?: ThemeProviderContext,
 ) {
-  const context = polarisTheme ? {polarisTheme} : createThemeContext();
+  const context = polarisTheme ? polarisTheme : createThemeContext();
   return mountWithAppProvider(
     <ThemeProvider value={context}>{node}</ThemeProvider>,
   );

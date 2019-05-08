@@ -30,7 +30,7 @@ describe('createPolarisContext()', () => {
       stickyManager: expect.any(StickyManager),
       scrollLockManager: expect.any(ScrollLockManager),
       appBridge: undefined,
-      polarisTheme: {
+      theme: {
         logo: null,
       },
     });
@@ -75,7 +75,7 @@ describe('createPolarisContext()', () => {
       stickyManager,
       scrollLockManager,
       appBridge: undefined,
-      polarisTheme: {
+      theme: {
         logo: null,
       },
     };
@@ -108,7 +108,7 @@ describe('createPolarisContext()', () => {
       stickyManager,
       scrollLockManager,
       appBridge: undefined,
-      polarisTheme: {
+      theme: {
         logo: null,
       },
     };
@@ -127,7 +127,7 @@ describe('createPolarisContext()', () => {
       stickyManager: expect.any(StickyManager),
       scrollLockManager: expect.any(ScrollLockManager),
       appBridge: undefined,
-      polarisTheme: {
+      theme: {
         logo: null,
       },
     });

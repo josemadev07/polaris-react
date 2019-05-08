@@ -3,14 +3,12 @@ import * as React from 'react';
 import {noop} from '@shopify/javascript-utilities/other';
 import {get} from '../utilities/get';
 import merge from '../utilities/merge';
-import {createThemeContext} from '../components';
 import {PolarisContext} from '../components/types';
 import {DeepPartial} from '../types';
 
 // eslint-disable-next-line shopify/strict-component-boundaries
 import {
   createPolarisContext,
-  createAppProviderContext,
   AppProviderContext,
   Context as AppProviderContextType,
 } from '../components/AppProvider';
@@ -147,11 +145,4 @@ export class PolarisContextReactWrapper<P, S> extends ReactWrapper<P, S> {
 
     this.app = app;
   }
-}
-
-export function createPolarisProps(): PolarisContext {
-  const polaris = createAppProviderContext();
-  const theme = createThemeContext().polarisTheme;
-  const polarisContext = {...polaris, theme};
-  return polarisContext;
 }
