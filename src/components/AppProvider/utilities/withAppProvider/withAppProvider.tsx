@@ -9,6 +9,7 @@ import {
   ThemeProviderContext,
   Consumer as ThemeProviderConsumer,
 } from '../../../ThemeProvider';
+import {PolarisContext} from '../../../types';
 import AppProviderContext from '../../Context';
 
 export type ReactComponent<P, C> =
@@ -73,7 +74,7 @@ export default function withAppProvider<OwnProps>({
               return (
                 <ThemeProviderConsumer>
                   {(polarisTheme) => {
-                    const polarisContext = {
+                    const polarisContext: PolarisContext = {
                       ...polaris,
                       theme: polarisTheme,
                     };
