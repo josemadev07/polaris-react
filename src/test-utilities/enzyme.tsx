@@ -1,5 +1,6 @@
 import {ReactWrapper, CommonWrapper} from 'enzyme';
 import * as React from 'react';
+import {mount} from 'enzyme';
 import {noop} from '@shopify/javascript-utilities/other';
 import {get} from '../utilities/get';
 import merge from '../utilities/merge';
@@ -129,35 +130,43 @@ export function mountWithAppProvider<P>(
     frame,
   };
 
-  const wrapper = new PolarisContextReactWrapper(node, {
+  const wrapper = polarisContextReactWrapper(node, {
     app: context,
   });
 
   return wrapper;
 }
 
-export class PolarisContextReactWrapper<P, S> extends ReactWrapper<P, S> {
-  public readonly app: AppContext;
+type PolarisContextReactWrapper<P, S> = ReactWrapper<P, S> & AppContextOptions;
 
-  constructor(element: React.ReactElement<P>, {app}: AppContextOptions) {
-    super(<TestProvider />);
+export function polarisContextReactWrapper<P, S>(
+  element: React.ReactElement<P>,
+  {app}: AppContextOptions,
+): PolarisContextReactWrapper<P, S> {
+  function TestProvider<P>(props: P) {
+    let content: React.ReactNode = element;
 
-    function TestProvider<P>(props: P) {
-      let content: React.ReactNode = element;
-
-      if (Object.keys(props).length > 0) {
-        content = React.cloneElement(React.Children.only(element), props);
-      }
-
-      return (
-        <AppProviderContext.Provider value={app.polaris}>
-          <ThemeProviderProvider value={app.themeProvider}>
-            <FrameProvider value={app.frame}>{content}</FrameProvider>
-          </ThemeProviderProvider>
-        </AppProviderContext.Provider>
-      );
+    if (Object.keys(props).length > 0) {
+      content = React.cloneElement(React.Children.only(element), props);
     }
 
-    this.app = app;
+    return (
+      <AppProviderContext.Provider value={app.polaris}>
+        <ThemeProviderProvider value={app.themeProvider}>
+          <FrameProvider value={app.frame}>{content}</FrameProvider>
+        </ThemeProviderProvider>
+      </AppProviderContext.Provider>
+    );
   }
+
+  const wrapper = mount<P, S>(<TestProvider />);
+
+  Object.defineProperty(wrapper, 'app', {
+    enumerable: true,
+    writable: false,
+    configurable: false,
+    value: app,
+  });
+
+  return wrapper as PolarisContextReactWrapper<P, S>;
 }

@@ -28,7 +28,7 @@ export interface WithAppProviderProps {
 }
 
 export interface Options {
-  inScrollable?: boolean;
+  withinScrollable?: boolean;
 }
 
 function withScrollable<P, T>(WrappedComponent: ReactComponent<P, T>) {
@@ -58,7 +58,7 @@ function withScrollable<P, T>(WrappedComponent: ReactComponent<P, T>) {
 }
 
 export default function withAppProvider<OwnProps>({
-  inScrollable,
+  withinScrollable,
 }: Options = {}) {
   return function addProvider<C>(
     WrappedComponent: ReactComponent<OwnProps & WithAppProviderProps, C>,
@@ -103,7 +103,7 @@ export default function withAppProvider<OwnProps>({
     }
 
     let WithScrollable;
-    if (inScrollable) {
+    if (withinScrollable) {
       WithScrollable = withScrollable(WithProvider);
     }
 

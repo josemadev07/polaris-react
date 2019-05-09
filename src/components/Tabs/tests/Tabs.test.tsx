@@ -377,19 +377,6 @@ describe('<Tabs />', () => {
   });
 
   describe('<Popover />', () => {
-    // Popover always exists / no-set-state
-    // eslint-disable-next-line jest/no-disabled-tests
-    it.skip('renders a Popover when there are hiddenTabs', () => {
-      const tabs = mountWithAppProvider(<Tabs {...mockProps} />);
-      tabs.setState({
-        tabWidths: [82, 160, 150, 100, 80, 120],
-        containerWidth: 300,
-      });
-
-      const popover = tabs.find(Popover);
-      expect(popover).toHaveLength(1);
-    });
-
     it('passes preferredPosition below to the Popover', () => {
       const tabs = mountWithAppProvider(<Tabs {...mockProps} />);
       const tabMeasurer = tabs.find(TabMeasurer);

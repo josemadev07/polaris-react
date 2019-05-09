@@ -255,4 +255,4 @@ function prefersReducedMotion() {
   }
 }
 
-export default withAppProvider({inScrollable: true})(Scrollable);
+export default withAppProvider({withinScrollable: true})(Scrollable);
